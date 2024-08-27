@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const trainSchema = new mongoose.Schema({
   engineId: { type: String, required: true },
-  gpsData: {
-    latitude: { type: Number, required: true },
-    longitude: { type: Number, required: true },
-    timestamp: { type: Date, default: Date.now }
-  }
+  route: { type: String, required: true },
+  currentLocation: { type: String, default: "" },
+ latitude: {type: Number, default: 0},
+ longitude: {type: Number, default: 0},
+timestamp: { type: Date, required: true }
 });
 
-module.exports = mongoose.model('Train', trainSchema);
+export default mongoose.model('Train', trainSchema);
