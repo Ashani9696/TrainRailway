@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import TrainList from './components/TrainList';
+import TrainMap from './components/TrainDetail';
+import TrainDetail from './components/TrainDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <h1>Train Tracking System</h1>
+        <Routes>
+          <Route path="/" element={<TrainList />} />
+          <Route path="/train/:id" element={<TrainDetail />} />
+          <Route path="/map/:id" element={<TrainMap />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
