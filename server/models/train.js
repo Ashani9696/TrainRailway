@@ -1,12 +1,23 @@
 import mongoose from 'mongoose';
 
 const trainSchema = new mongoose.Schema({
-  engineId: { type: String, required: true },
   route: { type: String, required: true },
-  currentLocation: { type: String, default: "" },
- latitude: {type: Number, default: 0},
- longitude: {type: Number, default: 0},
-timestamp: { type: Date, required: true }
+  currentLocation: {
+    latitude: { type: Number, required: true },
+    longitude: { type: Number, required: true }
+  },
+  timestamp: { type: Date, required: true },
+  path: [{ 
+    latitude: { type: Number, required: true }, 
+    longitude: { type: Number, required: true },
+    label: { type: String, required: true }
+  }],
+  engineHistory: [{
+    engineId: { type: String },
+    detachedAt: { type: Date },
+    current: { type: Boolean, default: false }
+  }]
 });
+
 
 export default mongoose.model('Train', trainSchema);
