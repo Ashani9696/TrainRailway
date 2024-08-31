@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 import "./utils/backupCron.js";
+import authRoutes from './routes/authRoutes.js';
 import { updateLocation1, updateLocation2, updateLocation3, updateLocation4,updateLocation5,updateLocation6,updateLocation7,updateLocation8,updateLocation9,updateLocation10 } from "./controllers/updatingTrainsCurrentLocation.js";
 
 const app = express();
@@ -43,6 +44,7 @@ updateLocation10();
 
 
 app.use("/api/trains", trainRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(PORT || 5000, () => {
   connect();

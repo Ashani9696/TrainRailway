@@ -39,7 +39,7 @@ export const updateLocation1 = async (req, res) => {
 
     await updateLocation();
 
-    setInterval(updateLocation, 6000);
+    setInterval(updateLocation, 60000);
     console.log("data ganarator is started");
   } catch (error) {
     throw error;
